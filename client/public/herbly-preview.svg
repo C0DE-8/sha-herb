@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fbfcf8"/><stop offset="1" stop-color="#f0f4eb"/></linearGradient>
+    <radialGradient id="halo"><stop stop-color="#e4eddd"/><stop offset="1" stop-color="#e4eddd" stop-opacity="0"/></radialGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="12" stdDeviation="15" flood-color="#34533a" flood-opacity=".12"/></filter>
+  </defs>
+  <rect width="1200" height="630" fill="url(#paper)"/>
+  <circle cx="890" cy="315" r="315" fill="url(#halo)"/>
+  <g transform="translate(92 92)">
+    <rect width="47" height="47" rx="15" fill="#526e55"/>
+    <path d="M23.5 38V23m0 8c-8 0-12-5-12-13 8 0 12 5 12 13Zm0-7c0-8 5-13 13-13 0 8-5 13-13 13Z" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="61" y="34" fill="#304333" font-family="Arial,sans-serif" font-size="32" font-weight="700" letter-spacing="-1.7">herbly</text>
+  </g>
+  <g font-family="Arial,sans-serif">
+    <text x="96" y="266" fill="#304333" font-size="69" font-weight="700" letter-spacing="-3.1">What’s this herb?</text>
+    <text x="100" y="321" fill="#778578" font-size="23">Identify plants with a photo or live scan.</text>
+    <g transform="translate(100 375)">
+      <rect width="197" height="56" rx="13" fill="#557358"/>
+      <g transform="translate(18 16)" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M1 6h6l3-4h10l3 4h6v19H1z"/><circle cx="15" cy="15" r="5"/>
+      </g>
+      <text x="64" y="36" fill="#fff" font-size="16" font-weight="700" letter-spacing=".5">SCAN A PLANT</text>
+    </g>
+    <text x="100" y="472" fill="#96a393" font-size="14" letter-spacing="1.5">A POCKET FIELD GUIDE, POWERED BY AI</text>
+  </g>
+  <g filter="url(#shadow)" transform="translate(760 69)">
+    <ellipse cx="183" cy="249" rx="191" ry="214" fill="#edf3e9"/>
+    <path d="M166 470c8-79 6-158-4-249" fill="none" stroke="#6f8768" stroke-width="9" stroke-linecap="round"/>
+    <g fill="none" stroke="#718c6b" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M164 402c-72 8-115-21-127-83 68-13 113 18 127 83Z"/>
+      <path d="M160 348c-75-12-109-52-102-116 69 5 108 43 102 116Z"/>
+      <path d="M159 282c-68-24-92-69-75-128 64 17 92 60 75 128Z"/>
+      <path d="M158 220c-49-31-60-74-36-123 46 22 60 64 36 123Z"/>
+      <path d="M168 378c72-1 111-35 116-98-69-6-111 29-116 98Z"/>
+      <path d="M164 312c72-17 102-60 91-123-68 10-103 50-91 123Z"/>
+      <path d="M162 246c63-29 83-75 61-132-61 22-84 67-61 132Z"/>
+      <path d="M161 190c43-39 46-83 15-127-41 29-48 72-15 127Z"/>
+    </g>
+    <g fill="#8ea184" opacity=".9">
+      <ellipse cx="90" cy="360" rx="34" ry="10" transform="rotate(28 90 360)"/>
+      <ellipse cx="244" cy="344" rx="36" ry="10" transform="rotate(-23 244 344)"/>
+      <ellipse cx="106" cy="205" rx="32" ry="9" transform="rotate(49 106 205)"/>
+      <ellipse cx="231" cy="209" rx="32" ry="9" transform="rotate(-46 231 209)"/>
+    </g>
+  </g>
+  <g opacity=".6" fill="#9cad91"><ellipse cx="1095" cy="499" rx="42" ry="13" transform="rotate(-34 1095 499)"/><ellipse cx="700" cy="165" rx="27" ry="9" transform="rotate(31 700 165)"/></g>
+</svg>
