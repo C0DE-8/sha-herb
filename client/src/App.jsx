@@ -5,6 +5,7 @@ import HerbResult from './pages/HerbResult/HerbResult.jsx'
 import PlantScan from './pages/PlantScan/PlantScan.jsx'
 import MyHerbs from './pages/MyHerbs/MyHerbs.jsx'
 import Insights from './pages/Insights/Insights.jsx'
+import NotFound from './pages/NotFound/NotFound.jsx'
 import './App.css'
 
 function AppRoutes() {
@@ -33,7 +34,7 @@ function AppRoutes() {
     <Route path="/result" element={<HerbResult herb={herb} onBack={() => navigate('/')} onSave={() => { if (herb) setHerbs((current) => current.some((item) => item.name === herb.name) ? current : [herb, ...current]); setSaved((value) => !value) }} saved={saved}/>}/>
     <Route path="/my-herbs" element={<MyHerbs herbs={herbs} onOpenHerb={openHerb} onScan={() => navigate('/scan')}/>}/>
     <Route path="/insights" element={<Insights herbs={herbs} onScan={() => navigate('/scan')}/>}/>
-    <Route path="*" element={<Dashboard onScan={() => navigate('/scan')} onOpenHerb={openHerb} recentHerbs={herbs}/>}/>
+    <Route path="*" element={<NotFound />}/>
   </Routes>
 }
 
