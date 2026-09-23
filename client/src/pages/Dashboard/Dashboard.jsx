@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { Header } from '../../components/Header.jsx'
 import { ScanPanel } from '../../components/ScanPanel.jsx'
 import { RecentMatches } from '../../components/RecentMatches.jsx'

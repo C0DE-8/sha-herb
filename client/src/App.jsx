@@ -1,24 +1,42 @@
 import { useState } from 'react'
+import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom'
 import Dashboard from './pages/Dashboard/Dashboard.jsx'
 import HerbResult from './pages/HerbResult/HerbResult.jsx'
+import PlantScan from './pages/PlantScan/PlantScan.jsx'
+import MyHerbs from './pages/MyHerbs/MyHerbs.jsx'
+import Insights from './pages/Insights/Insights.jsx'
 import './App.css'
 
-export default function App() {
-  const [page, setPage] = useState('overview')
+function AppRoutes() {
+  const navigate = useNavigate()
   const [herb, setHerb] = useState(null)
   const [saved, setSaved] = useState(false)
-  const [recentHerbs, setRecentHerbs] = useState([])
+  const [herbs, setHerbs] = useState([])
 
-  function completeScan(file) {
-    const preview = file ? URL.createObjectURL(file) : undefined
-    const result = { name: 'Rosemary', scientific: 'Salvia rosmarinus', score: file ? '96%' : '96%', time: 'Just now', result: 'Mediterranean', preview, initials: 'R', tone: 'match-green' }
+  function completeScan(preview) {
+    const result = { name: 'Rosemary', scientific: 'Salvia rosmarinus', score: '96%', time: 'Just now', result: 'Demo result · AI not connected', preview, initials: 'R', tone: 'match-green' }
     setHerb(result)
-    setRecentHerbs((current) => [result, ...current.filter((item) => item.time !== 'Just now')])
+    setHerbs((current) => [result, ...current.filter((item) => item.name !== result.name)])
     setSaved(false)
-    setPage('result')
+    navigate('/result')
   }
 
-  return page === 'result'
-    ? <HerbResult herb={herb} onBack={() => setPage('overview')} onSave={() => setSaved((value) => !value)} saved={saved} />
-    : <Dashboard onScan={() => completeScan()} onPhotoSelect={(file) => file && completeScan(file)} onOpenHerb={(item) => { setHerb(item); setPage('result') }} recentHerbs={recentHerbs} />
+  function openHerb(item) {
+    setHerb(item)
+    setSaved(herbs.some((savedHerb) => savedHerb.name === item.name))
+    navigate('/result')
+  }
+
+  return <Routes>
+    <Route path="/" element={<Dashboard onScan={() => navigate('/scan')} onOpenHerb={openHerb} recentHerbs={herbs}/>}/>
+    <Route path="/scan" element={<PlantScan onIdentify={completeScan}/>}/>
+    <Route path="/result" element={<HerbResult herb={herb} onBack={() => navigate('/')} onSave={() => { if (herb) setHerbs((current) => current.some((item) => item.name === herb.name) ? current : [herb, ...current]); setSaved((value) => !value) }} saved={saved}/>}/>
+    <Route path="/my-herbs" element={<MyHerbs herbs={herbs} onOpenHerb={openHerb} onScan={() => navigate('/scan')}/>}/>
+    <Route path="/insights" element={<Insights herbs={herbs} onScan={() => navigate('/scan')}/>}/>
+    <Route path="*" element={<Dashboard onScan={() => navigate('/scan')} onOpenHerb={openHerb} recentHerbs={herbs}/>}/>
+  </Routes>
+}
+
+export default function App() {
+  return <BrowserRouter><AppRoutes/></BrowserRouter>
 }

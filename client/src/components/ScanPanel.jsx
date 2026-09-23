@@ -1,4 +1,4 @@
-export function ScanPanel({ scanning = false, onScan, notice = '', photoName = '', onPhotoSelect }) {
+export function ScanPanel({ scanning = false, onScan, notice = '', onPhotoSelect }) {
   return (
     <section className={`scan-card${scanning ? ' is-scanning' : ''}`} aria-labelledby="scan-title">
       <div className="scan-copy">
@@ -10,7 +10,7 @@ export function ScanPanel({ scanning = false, onScan, notice = '', photoName = '
             <span className="mic-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 14 8l5-2-2 5 5 2-5 2 2 5-5-2-2 5-2-5-5 2 2-5-5-2 5-2-2-5 5 2z"/><circle cx="12" cy="13" r="2.5"/></svg></span>
             {scanning ? 'Scanning…' : '📷  Scan an Herb'}
           </button>
-          <label className="photo-button"><svg viewBox="0 0 24 24"><path d="M4 7h3l1.5-2h7L17 7h3v12H4z"/><circle cx="12" cy="13" r="3.5"/></svg><span>{photoName || 'Upload a photo'}</span><input type="file" accept="image/*" onChange={(event) => onPhotoSelect?.(event.target.files?.[0])} /></label>
+          <label className="photo-button"><svg viewBox="0 0 24 24"><path d="M4 7h3l1.5-2h7L17 7h3v12H4z"/><circle cx="12" cy="13" r="3.5"/></svg><span>Upload a photo</span><input type="file" accept="image/*" onChange={(event) => onPhotoSelect?.(event.target.files?.[0])} /></label>
         </div>
         <span className="scan-hint">Point your camera at a plant or choose a clear photo.</span>
         {notice && <p className="scan-notice" role="status">{notice}</p>}

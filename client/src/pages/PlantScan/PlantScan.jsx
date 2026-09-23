@@ -15,10 +15,12 @@ export default function PlantScan({ onIdentify }) {
     streamRef.current = null
   }, [])
 
-  const startCamera = useCallback(async () => {
-    setStarting(true)
-    setError('')
-    setPhoto('')
+  const startCamera = useCallback(async (reset = true) => {
+    if (reset) {
+      setStarting(true)
+      setError('')
+      setPhoto('')
+    }
     stopCamera()
     if (!navigator.mediaDevices?.getUserMedia) {
       setError('Camera access needs a secure connection. Upload a plant photo instead.')
@@ -37,8 +39,8 @@ export default function PlantScan({ onIdentify }) {
   }, [stopCamera])
 
   useEffect(() => {
-    startCamera()
-    return stopCamera
+    const timer = window.setTimeout(() => startCamera(false), 0)
+    return () => { window.clearTimeout(timer); stopCamera() }
   }, [startCamera, stopCamera])
 
   function capturePhoto() {
